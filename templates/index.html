@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Início{% endblock %}
+
+{% block content %}
+
+<div class="hero text-center">
+    <h1 class="minecraft glow">Ryan Victor</h1>
+
+    <!-- FRASE ÚNICA (SEM LOOP) -->
+    <p class="minecraft mt-2">
+        Técnico em Informática • Desenvolvedor Web
+    </p>
+
+    <p class="mt-3 minecraft">
+        Desenvolvo aplicações web modernas utilizando Python, Flask e Bootstrap,
+        sempre buscando soluções funcionais, organizadas e com identidade profissional.
+    </p>
+
+    <!-- BOTÕES -->
+    <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+        <a href="/projetos" class="btn btn-outline-light minecraft">
+            Ver Projetos
+        </a>
+
+        <a href="/contato" class="btn btn-outline-success minecraft">
+            Contato Profissional
+        </a>
+    </div>
+
+    <!-- REDES -->
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="https://github.com/ClearShotsz" target="_blank" class="icon-btn">
+            <i class="bi bi-github"></i>
+        </a>
+        <a href="https://guns.lol/clearshotsz" target="_blank" class="icon-btn">
+            <i class="bi bi-globe"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ryan-victor-2a64193aa" target="_blank" class="icon-btn">
+            <i class="bi bi-linkedin"></i>
+        </a>
+    </div>
+</div>
+
+<!-- SOBRE -->
+<section class="mt-5 text-center">
+    <h2 class="minecraft glow">Sobre mim</h2>
+    <p class="minecraft">
+        Sou estudante de Técnico em Informática, apaixonado por tecnologia e programação.
+        Tenho interesse em desenvolvimento web e criação de jogos, sempre buscando evoluir,
+        aprender novas ferramentas e crescer profissionalmente na área.
+    </p>
+</section>
+
+<!-- SKILLS -->
+<section class="mt-5 text-center">
+    <h2 class="minecraft glow">Skills</h2>
+    <p class="minecraft">
+        Python • Flask • HTML • CSS • JavaScript • Bootstrap • Git • GitHub
+    </p>
+</section>
+
+{% endblock %}
