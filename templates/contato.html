@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class="contact-card text-center">
+
+        <h1 class="minecraft glow mb-3">Contato Profissional</h1>
+
+        <p class="minecraft mb-4">
+            Quer conversar, trocar ideias ou acompanhar meus projetos?
+            Me chama em qualquer uma das redes abaixo.
+        </p>
+
+        <!-- AÇÕES PRINCIPAIS -->
+        <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+
+            <a href="https://wa.me/55SEUNUMEROAQUI"
+               target="_blank"
+               class="btn btn-success minecraft px-4 py-3">
+                <i class="bi bi-whatsapp me-2"></i> WhatsApp
+            </a>
+
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ryanvictoram1@gmail.com"
+               target="_blank"
+               class="btn btn-outline-light minecraft px-4 py-3">
+                <i class="fas fa-envelope me-2"></i> Email
+            </a>
+
+            <button class="btn btn-outline-success minecraft px-4 py-3"
+                    onclick="copiarEmail()">
+                <i class="bi bi-clipboard me-2"></i> Copiar Email
+            </button>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- REDES SOCIAIS -->
+        <h2 class="minecraft glow mb-3">Redes Sociais</h2>
+
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+            <!-- GitHub -->
+            <a href="https://github.com/ClearShotsz" target="_blank" class="icon-btn">
+                <i class="bi bi-github"></i>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/ryan-victor-2a64193aa"
+               target="_blank"
+               class="icon-btn">
+                <i class="bi bi-linkedin"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/ryanzk027"
+               target="_blank"
+               class="icon-btn">
+                <i class="bi bi-instagram"></i>
+            </a>
+
+            <!-- Discord -->
+            <a href="https://discord.com/users/ClearShotsz"
+               target="_blank"
+               class="icon-btn">
+                <i class="bi bi-discord"></i>
+            </a>
+
+            <!-- Site -->
+            <a href="https://guns.lol/clearshotsz"
+               target="_blank"
+               class="icon-btn">
+                <i class="bi bi-globe"></i>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function copiarEmail() {
+    navigator.clipboard.writeText("ryanvictoram1@gmail.com");
+    alert("Email copiado!");
+}
+</script>
+
+{% endblock %}

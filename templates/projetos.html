@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Projetos{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="minecraft glow text-center mb-5">Projetos</h1>
+
+    <div class="row justify-content-center gap-4">
+
+        <!-- QUIZ -->
+        <div class="col-md-5">
+            <div class="project-card text-center">
+
+                <img src="{{ url_for('static', filename='img/quiz.png') }}" class="img-fluid">
+
+                <div class="card-body">
+                    <h4 class="minecraft glow mt-3">Quiz de Informática Básica</h4>
+
+                    <p class="minecraft mt-2">
+                        Projeto educacional interativo com versão WEB
+                        jogável no navegador e versão DESKTOP em Python (Pygame)
+                        disponível para download.
+                    </p>
+
+                    <a href="/quiz" class="btn btn-success minecraft mt-2">
+                        🎮 Jogar Online
+                    </a>
+
+                    <a href="{{ url_for('static', filename='downloads/quiz_pygame.exe') }}"
+                       class="btn btn-outline-success minecraft mt-2"
+                       download>
+                       ⬇️ Baixar versão PC
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SENAC ROBLOX -->
+        <div class="col-md-5">
+            <div class="project-card text-center">
+
+                <img src="{{ url_for('static', filename='img/senac.png') }}" class="img-fluid">
+
+                <div class="card-body">
+                    <h4 class="minecraft glow mt-3">SENAC no Roblox</h4>
+
+                    <p class="minecraft mt-2">
+                        Recriação do prédio do SENAC dentro do Roblox,
+                        focada em design de ambientes 3D e interatividade.
+                    </p>
+
+                    <a href="https://www.roblox.com/games/SEU_ID_AQUI"
+                       target="_blank"
+                       class="btn btn-primary minecraft mt-2">
+                        🏫 Jogar no Roblox
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

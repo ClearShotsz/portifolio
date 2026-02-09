@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Quiz de Informática{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 text-center">
+
+    <h1 class="minecraft glow mb-4">Quiz de Informática Básica</h1>
+
+    <div id="quiz-box" class="project-card p-4">
+
+        <p class="minecraft mb-2" id="contador"></p>
+
+        <h3 id="pergunta" class="minecraft mb-4"></h3>
+
+        <div id="opcoes" class="d-grid gap-3"></div>
+
+        <p id="feedback" class="minecraft mt-3"></p>
+
+        <button id="btnProxima"
+                class="btn btn-success minecraft mt-3"
+                onclick="proximaPergunta()"
+                style="display:none;">
+            Próxima pergunta
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+const perguntas = [
+    { p: "O que significa CPU?", o: ["Central Processing Unit","Computer Personal Unit","Central Print Unit","Control Processing Unit"], c: 0 },
+    { p: "Qual destes é um sistema operacional?", o: ["Windows","Python","HTML","USB"], c: 0 },
+    { p: "Para que serve o mouse?", o: ["Digitar texto","Apontar e clicar","Imprimir documentos","Armazenar arquivos"], c: 1 },
+    { p: "O que é um arquivo?", o: ["Programa de computador","Documento digital","Peça de hardware","Tipo de vírus"], c: 1 },
+    { p: "Qual tecla usamos para copiar algo?", o: ["Ctrl + C","Ctrl + V","Ctrl + X","Ctrl + Z"], c: 0 },
+    { p: "Qual desses navegadores acessa a internet?", o: ["Word","Chrome","Excel","PowerPoint"], c: 1 },
+    { p: "Qual a função do teclado?", o: ["Salvar arquivos","Digitar textos","Desenhar imagens","Reproduzir sons"], c: 1 },
+    { p: "O que é Wi-Fi?", o: ["Rede sem fio","Antivírus","Software","Dispositivo"], c: 0 },
+    { p: "Qual desses é um editor de texto?", o: ["Word","Photoshop","Chrome","Excel"], c: 0 },
+    { p: "O que significa USB?", o: ["Universal Serial Bus","Unique System Backup","Universal Software Base","User Security Block"], c: 0 },
+    { p: "Qual dessas extensões é de imagem?", o: [".exe",".jpg",".mp3",".docx"], c: 1 },
+    { p: "O que significa HTML?", o: ["Hyper Text Markup Language","High Transfer Machine Language","Hyperlink Text Mark Language","Home Tool Markup Language"], c: 0 },
+    { p: "Qual dessas é uma linguagem de programação?", o: ["HTML","Python","JPEG","USB"], c: 1 },
+    { p: "Qual dispositivo armazena dados?", o: ["Monitor","Teclado","HD","Mouse"], c: 2 },
+    { p: "Qual tecla desfaz uma ação?", o: ["Ctrl + Z","Ctrl + Y","Ctrl + C","Ctrl + V"], c: 0 },
+    { p: "O que é um vírus de computador?", o: ["Programa malicioso","Dispositivo","Comando","Linguagem"], c: 0 },
+    { p: "Qual dessas redes é usada para internet?", o: ["LAN","WAN","PAN","Todas as anteriores"], c: 3 },
+    { p: "Função da memória RAM?", o: ["Armazenar dados temporários","Salvar permanentemente","Exibir imagens","Processar dados"], c: 0 },
+    { p: "Qual dessas é uma rede social?", o: ["Google","Facebook","Linux","Windows"], c: 1 },
+    { p: "O que é um firewall?", o: ["Proteção contra ataques","Editor","Hardware","Linguagem"], c: 0 }
+];
+
+let indice = 0;
+let pontos = 0;
+
+function carregarPergunta() {
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("btnProxima").style.display = "none";
+
+    document.getElementById("contador").innerText =
+        `Pergunta ${indice + 1} de ${perguntas.length}`;
+
+    const q = perguntas[indice];
+    document.getElementById("pergunta").innerText = q.p;
+
+    const opcoes = document.getElementById("opcoes");
+    opcoes.innerHTML = "";
+
+    q.o.forEach((texto, i) => {
+        const btn = document.createElement("button");
+        btn.className = "btn btn-outline-success minecraft";
+        btn.innerText = texto;
+        btn.onclick = () => responder(i);
+        opcoes.appendChild(btn);
+    });
+}
+
+function responder(i) {
+    const q = perguntas[indice];
+    const feedback = document.getElementById("feedback");
+
+    if (i === q.c) {
+        feedback.innerText = "✅ Resposta correta!";
+        pontos++;
+    } else {
+        feedback.innerText = `❌ Errado! Resposta correta: ${q.o[q.c]}`;
+    }
+
+    document.getElementById("btnProxima").style.display = "inline-block";
+}
+
+function proximaPergunta() {
+    indice++;
+    if (indice < perguntas.length) {
+        carregarPergunta();
+    } else {
+        document.getElementById("quiz-box").innerHTML = `
+            <h2 class="minecraft glow">Quiz Finalizado 🎉</h2>
+
+            <p class="minecraft mt-3">
+                Você acertou <strong>${pontos}</strong> de ${perguntas.length} perguntas.
+            </p>
+
+            <div class="d-grid gap-3 mt-4">
+
+                <a href="/projetos" class="btn btn-success minecraft">
+                    📂 Ver outros projetos
+                </a>
+
+                <a href="/quiz" class="btn btn-outline-success minecraft">
+                    🔄 Jogar novamente
+                </a>
+
+                <a href="{{ url_for('static', filename='downloads/quiz_pygame.exe') }}"
+                   class="btn btn-primary minecraft"
+                   download>
+                   ⬇️ Baixar versão PC (Windows)
+                </a>
+
+            </div>
+        `;
+    }
+}
+
+carregarPergunta();
+</script>
+
+{% endblock %}
